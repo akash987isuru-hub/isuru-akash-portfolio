@@ -31,15 +31,47 @@ function Contact() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (status === "sending") return;
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS environment variables are missing.");
+      setStatus("error");
+      return;
+    }
+
+    const formData = new FormData(form.current);
+    const senderName = String(formData.get("user_name") || "").trim();
+    const senderEmail = String(formData.get("user_email") || "").trim();
+    const subject = String(formData.get("subject") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
     setStatus("sending");
 
     try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form.current,
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY },
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          // Recipient fields - set EmailJS Template > To Email to {{to_email}}
+          to_name: "Isuru Akash",
+          to_email: EMAIL,
+
+          // Sender/reply fields. Multiple aliases are included so the template
+          // remains compatible with both the old and the updated field names.
+          from_name: senderName,
+          from_email: senderEmail,
+          reply_to: senderEmail,
+          user_name: senderName,
+          user_email: senderEmail,
+          subject,
+          message,
+        },
+        { publicKey },
       );
+
       form.current?.reset();
       setStatus("success");
     } catch (error) {
@@ -77,7 +109,7 @@ function Contact() {
                 <div className="contact-item-icon"><FaEnvelope /></div>
                 <div>
                   <span>Email</span>
-                  <p>{EMAIL}</p>
+                  <p><a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
                 </div>
                 <button type="button" className="copy-email-btn" onClick={handleCopyEmail} aria-label="Copy email address">
                   {copied ? <FaCheck /> : <FaCopy />}

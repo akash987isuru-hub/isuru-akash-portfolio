@@ -2,7 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   FaBriefcase,
   FaCode,
+  FaDownload,
   FaEnvelope,
+  FaFilePdf,
   FaGithub,
   FaGraduationCap,
   FaHouse,
@@ -19,6 +21,20 @@ const actions = [
   { label: "Explore Tech Stack", hint: "03", icon: <FaCode />, href: "#skills" },
   { label: "View Projects", hint: "04", icon: <FaBriefcase />, href: "#projects" },
   { label: "Education Journey", hint: "05", icon: <FaGraduationCap />, href: "#education" },
+  {
+    label: "View CV",
+    hint: "↗",
+    icon: <FaFilePdf />,
+    href: "/Isuru_Akash_CV.pdf",
+    external: true,
+  },
+  {
+    label: "Download CV",
+    hint: "↓",
+    icon: <FaDownload />,
+    href: "/Isuru_Akash_CV.pdf",
+    download: "Isuru_Akash_CV.pdf",
+  },
   {
     label: "Open GitHub",
     hint: "↗",
@@ -80,7 +96,14 @@ function CommandPalette({ open, onClose }) {
       if (event.key === "Enter" && filteredActions[activeIndex]) {
         event.preventDefault();
         const action = filteredActions[activeIndex];
-        if (action.external) {
+        if (action.download) {
+          const link = document.createElement("a");
+          link.href = action.href;
+          link.download = action.download;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+        } else if (action.external) {
           window.open(action.href, "_blank", "noopener,noreferrer");
         } else {
           window.location.href = action.href;
@@ -129,6 +152,7 @@ function CommandPalette({ open, onClose }) {
                 href={action.href}
                 target={action.external ? "_blank" : undefined}
                 rel={action.external ? "noopener noreferrer" : undefined}
+                download={action.download || undefined}
                 className={`command-item ${activeIndex === index ? "active" : ""}`}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={onClose}

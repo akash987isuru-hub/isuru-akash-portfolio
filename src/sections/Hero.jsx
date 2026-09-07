@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import {
   FaArrowRight,
+  FaDownload,
   FaEnvelope,
+  FaEye,
   FaGithub,
   FaLinkedinIn,
   FaTerminal,
@@ -82,6 +84,25 @@ function Hero({ onOpenCommand }) {
             <button type="button" className="secondary-btn command-hero-btn" onClick={onOpenCommand}>
               <FaTerminal /> Quick Navigate
             </button>
+          </div>
+
+          <div className="cv-buttons" aria-label="Curriculum vitae actions">
+            <a
+              href="/Isuru_Akash_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cv-btn"
+            >
+              <FaEye /> View CV
+            </a>
+
+            <a
+              href="/Isuru_Akash_CV.pdf"
+              download="Isuru_Akash_CV.pdf"
+              className="cv-btn"
+            >
+              <FaDownload /> Download CV
+            </a>
           </div>
 
           <div className="hero-meta-row">

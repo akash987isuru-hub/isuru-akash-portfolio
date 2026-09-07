@@ -504,3 +504,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .availability-dot, .type-caret, .hero-orbit, .hero-scroll-cue i::after, .stack-marquee > div { animation: none !important; }
 }
+
+/* CV + contact link refinements */
+.contact-email-item p a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.contact-email-item p a:hover { color: var(--v2-cyan); }
+.cv-buttons { margin-top: 2px !important; }
+.cv-btn { text-decoration: none; font-weight: 700; }
+.cv-btn svg { font-size: .92rem; }
