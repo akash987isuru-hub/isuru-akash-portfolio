@@ -51,7 +51,7 @@ const projects = [
 
     technologies: ["ASP.NET Core MVC", "Web API", "C#", "SQL Server", "JWT"],
 
-    github: null,
+    github: "https://github.com/akash987isuru-hub/KMCEventPlatform",
 
     status: "Completed",
 
