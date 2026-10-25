@@ -81,7 +81,11 @@ function Hero({ onOpenCommand }) {
               View Selected Work <FaArrowRight />
             </a>
 
-            <button type="button" className="secondary-btn command-hero-btn" onClick={onOpenCommand}>
+            <button
+              type="button"
+              className="secondary-btn command-hero-btn"
+              onClick={onOpenCommand}
+            >
               <FaTerminal /> Quick Navigate
             </button>
           </div>
@@ -98,7 +102,7 @@ function Hero({ onOpenCommand }) {
 
             <a
               href="/MY_MAIN_CV_PDF.pdf"
-              download="MY_MAIN_CV_PDF.pdf"
+              download="ISURU_AKASH_MALLAWA.pdf"
               className="cv-btn"
             >
               <FaDownload /> Download CV
@@ -186,7 +190,11 @@ function Hero({ onOpenCommand }) {
         </div>
       </div>
 
-      <a className="hero-scroll-cue" href="#about" aria-label="Scroll to about section">
+      <a
+        className="hero-scroll-cue"
+        href="#about"
+        aria-label="Scroll to about section"
+      >
         <span>Scroll to explore</span>
         <i />
       </a>
