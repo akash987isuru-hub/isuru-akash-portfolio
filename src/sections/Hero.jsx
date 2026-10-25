@@ -92,7 +92,7 @@ function Hero({ onOpenCommand }) {
 
           <div className="cv-buttons" aria-label="Curriculum vitae actions">
             <a
-              href="/MY_MAIN_CV_PDF.pdf"
+              href="/IUSRU_AKASH_MALLAWA.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="cv-btn"
@@ -101,7 +101,7 @@ function Hero({ onOpenCommand }) {
             </a>
 
             <a
-              href="/MY_MAIN_CV_PDF.pdf"
+              href="/IUSRU_AKASH_MALLAWA.pdf"
               download="ISURU_AKASH_MALLAWA.pdf"
               className="cv-btn"
             >
