@@ -77,9 +77,9 @@ const projects = [
       "MySQL",
     ],
 
-    github: null,
+    github: "https://github.com/akash987isuru-hub/SiteVision",
 
-    status: "In Progress",
+    status: "Completed",
 
     visual: "SV",
   },
